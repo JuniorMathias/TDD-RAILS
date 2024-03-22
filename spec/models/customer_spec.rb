@@ -20,8 +20,22 @@ RSpec.describe Customer, type: :model do
   #    expect(customer.full_name).to eq("Sr. Junior")
   # end
   it 'Herança' do
-    customer = create(:customer, vip: false, days_to_pay: 10)
+    customer = create(:customer_vip)
+     expect(customer.vip).to eq(true)
+  end
+
+  it 'Herança' do
+    customer = create(:customer_default)
      expect(customer.vip).to eq(false)
+  end
+
+  it 'Using the attributes_for, it brings as a hash' do
+    attrs = attributes_for(:customer)
+    attrs1 = attributes_for(:customer_vip)
+    attrs2 = attributes_for(:customer_default)
+    puts attrs
+    puts attrs1
+    puts attrs2
   end
 
   it 'Create a Customer with a gem Faker' do
