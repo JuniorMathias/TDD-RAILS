@@ -24,7 +24,7 @@ RSpec.describe Customer, type: :model do
      expect(customer.vip).to eq(true)
   end
 
-  it 'Herança' do
+  it 'Herança with a def on factories' do
     customer = create(:customer_default)
      expect(customer.vip).to eq(false)
   end
