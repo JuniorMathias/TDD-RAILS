@@ -9,6 +9,11 @@ RSpec.describe Customer, type: :model do
   #   subject.save
   #   expect(subject.full_name).to eq("Sr. Junior")
   # end
+  it 'Sequences' do
+    customer = create(:customer, name: "Junior")
+    puts customer.email
+    expect(customer.full_name).to eq("Sr. Junior")
+  end
 
   # it 'Create a Customer with fixtures' do
   #  customer = customers(:jackson)

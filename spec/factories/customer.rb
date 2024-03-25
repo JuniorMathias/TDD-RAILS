@@ -4,10 +4,12 @@ FactoryBot.define do
       upcased false
     end
 
-    name Faker::Name.name
-    email Faker::Internet.email
-    # gender ['M', 'F'].sample
+    name {Faker::Name.name}
+    # email {Faker::Internet.email}
+    sequence(:email, 'b') {|n| "meu_email#{n}@email.com"}
 
+
+    # gender ['M', 'F'].sample
     trait :male do
       gender 'M'
     end
