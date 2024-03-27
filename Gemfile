@@ -41,6 +41,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
   gem 'httpparty'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
