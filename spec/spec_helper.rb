@@ -25,7 +25,7 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.order = "random"
+  # config.order = "random"
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -39,6 +39,15 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      #choose a test framework:
+      with.test_framework :rspec
+      #or, choose the following (which implies all of the above)
+      with.library :rails
+    end
   end
 
   #Time Helper 
