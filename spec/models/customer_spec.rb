@@ -62,6 +62,16 @@ RSpec.describe Customer, type: :model do
     expect(customer.vip).to eq(true)
   end
 
+  it 'Travel_to' do
+    travel_to Time.zone.local(2004, 11, 24, 01, 04, 44) do
+      @customer = create(:customer_vip)
+      # Time.current
+    end
+    puts @customer.created_at
+    expect(@customer.created_at).to eq(Time.new(2004, 11, 24, 1, 4, 44, '-02:00'))
+    expect(@customer.created_at).to be <Time.now
+  end
+
   it 'Atributo Transitório' do
     customer = create(:customer_default, upcased: true)
     expect(customer.name.upcase).to eq(customer.name)

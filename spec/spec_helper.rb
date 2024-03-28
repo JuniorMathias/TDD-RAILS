@@ -1,5 +1,6 @@
 #Webmock gem
 require 'webmock/rspec'
+require 'active_support/testing/time_helpers'
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
@@ -24,6 +25,8 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.order = "random"
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -37,6 +40,9 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  #Time Helper 
+  config.include ActiveSupport::Testing::TimeHelpers
 
   #FACTORYBOT LINT
   config.before(:suite) do
