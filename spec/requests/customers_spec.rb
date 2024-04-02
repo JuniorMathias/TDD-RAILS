@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "Customers", type: :request do
   describe "GET /customers" do
+    it "JSON SCHEMA MATCHERS" do
+      get '/customers/1.json'
+      expect(response).to match_response_schema("customer")
+    end
+
     it "works! 200 ok" do
       get customers_path
       expect(response).to have_http_status(200)
@@ -30,6 +35,7 @@ RSpec.describe "Customers", type: :request do
       response_body = JSON.parse(response.body)
       expect(response_body.fetch("id")).to eq(1)
       expect(response_body.fetch("name")).to be_kind_of(String)
+      expect(response_body.fetch("email")).to be_kind_of(String)
     end
 
     it "show - with include JSON" do
